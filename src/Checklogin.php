@@ -7,7 +7,7 @@ class Checklogin extends CMSMiddleWare{
         @session_start();
         try{
             if ($_SESSION['wa_session']['login']['loggedIn']===false){
-                header('Location: ./re/login');
+                header('Location: ./re/login'); /* skljlkjl */
                 exit();
                 }
         }catch(\Exception $e){
