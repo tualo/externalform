@@ -28,5 +28,6 @@ class Insertdata extends CMSMiddleWare{
 
             }
         }catch(\Exception $e){
+        }
     }
 }
