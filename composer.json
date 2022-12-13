@@ -1,0 +1,19 @@
+{
+    "name": "tualo/externalform",
+    "description": "tualo - backend for rezepte und ueberweisungen",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steffen Borchmann",
+            "email": "steffen.borchmann@tualo.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Tualo\\Office\\ExternalForm\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
