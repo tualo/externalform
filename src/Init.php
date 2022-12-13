@@ -5,7 +5,7 @@
 * pwID -> formularfeld Password
 * pwOldID -> formularfeld Password before
 */
-namespace Tualo\Office\WaCmsMiddleware;
+namespace Tualo\Office\ExternalForm;
 use Tualo\Office\ContentManagementSystem\CMSMiddleware;
 
 class Init extends CMSMiddleWare{
