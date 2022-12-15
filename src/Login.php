@@ -7,6 +7,8 @@
         public static function run(&$request,&$result){
             @session_start();
             // check dynamic fieldnames
+            print_r($_SESSION);
+            exit();
             if( 
                 isset($_REQUEST[$_SESSION['wa_session']['login']['usrOldID']]) 
                     && isset($_REQUEST[$_SESSION['wa_session']['login']['pwOldID']])
