@@ -2,6 +2,7 @@
 
 namespace Tualo\Office\ExternalForm;
 use Tualo\Office\ContentManagementSystem\CMSMiddleware;
+use Tualo\Office\Basic\TualoApplication as App;
 
 class Initdata extends CMSMiddleWare{
     public static function run(&$request,&$result){
