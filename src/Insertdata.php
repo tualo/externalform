@@ -32,8 +32,8 @@ class Insertdata extends CMSMiddleWare{
                                     'plz'=>$_REQUEST['plz'],
                                     'ort'=>$_REQUEST['ort'],
                                     'telefon'=>$_REQUEST['telefon'],
-                                    'email'=$_REQUEST['email'],
-                                    'rezeptwunsch'=$_REQUEST['rezeptwunsch']
+                                    'email'=>$_REQUEST['email'],
+                                    'rezeptwunsch'=>$_REQUEST['rezeptwunsch']
 
                                 ]);
 /*                            $geburtsdatum=$_REQUEST['geburtsdatum'];
