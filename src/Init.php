@@ -11,6 +11,11 @@ use Tualo\Office\ContentManagementSystem\CMSMiddleware;
 class Init extends CMSMiddleWare{
     public static function run(&$request,&$result){
         @session_start();
+/*      echo '<pre>';
+        print_r($_REQUEST);
+        print_r($_SESSION['wa_session']);
+        echo '</pre>';
+*/
         try{
             if ( isset($_REQUEST['logout']) ) unset($_SESSION['wa_session']) ;            
             if(! isset($_SESSION['wa_session'])) $_SESSION['wa_session']=[];
