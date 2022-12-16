@@ -12,6 +12,9 @@ class Initdata extends CMSMiddleWare{
                 $db  = App::get('session')->getDB();
                 $rezepte = $db->direct('select * from rezepte',[]);
                 $result['rezepte']=$rezepte;
+                if(isset($_REQUEST['rez'])){
+                    $db->direct('update rezepte set status=1 where id={id}',['id'=>$_REQUEST['rez']]);
+                }
 
             }
         }catch(\Exception $e){
