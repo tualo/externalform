@@ -15,10 +15,38 @@ class Insertdata extends CMSMiddleWare{
                 if ( $_REQUEST['typ'] == 'rezept'){
                     // Formular Rezept
                     // Überprüfung eventuell über $_SERVER['REMOTE_ADDR']
-                    $db->direct("insert into rezepte (name, geburtsdatum, strasse, plz, Ort, telefon, email, rezeptwunsch) 
-                        VALUES 
-                            ('".$_REQUEST['name']."','".$_REQUEST['geburtsdatum']."','".$_REQUEST['strasse']."','".$_REQUEST['plz']."','".$_REQUEST['ort']."','".$_REQUEST['telefon']."','".$_REQUEST['email']."','".$_REQUEST['rezeptwunsch']."','" ,[]);
 
+                    $db->direct("insert into rezepte (name, geburtsdatum, strasse, plz, Ort, telefon, email, rezeptwunsch) 
+                        VALUES ( {name}, 
+                                 {geburtsdatum},
+                                 {strasse},
+                                 {plz},
+                                 {ort},
+                                 {telefon},
+                                 {email},
+                                 {rezeptwunsch}
+                                )",[
+                                    'name'=>$_REQUEST['name'],
+                                    'geburtsdatum'=>$_REQUEST['geburtsdatum'],
+                                    'strasse' => $_REQUEST['strasse'],
+                                    'plz'=>$_REQUEST['plz'],
+                                    'ort'=>$_REQUEST['ort'],
+                                    'telefon'=>$_REQUEST['telefon'],
+                                    'email'=$_REQUEST['email'],
+                                    'rezeptwunsch'=$_REQUEST['rezeptwunsch']
+
+                                ]);
+/*                            $geburtsdatum=$_REQUEST['geburtsdatum'];
+                            $strasse=$_REQUEST['strasse'];
+                            $plz=$_REQUEST['plz'];
+                            $ort=$_REQUEST['ort'];
+                            $telefon=$_REQUEST['telefon'];
+                            $email=$_REQUEST['email'];
+                            $rezeptwunsch=$_REQUEST['rezeptwunsch'];
+
+                        )
+                           ('".$_REQUEST['name']."','".$_REQUEST['geburtsdatum']."','".$_REQUEST['strasse']."','".$_REQUEST['plz']."','".$_REQUEST['ort']."','".$_REQUEST['telefon']."','".$_REQUEST['email']."','".$_REQUEST['rezeptwunsch']."','" ,[]);
+*/ 
                 } 
             if ( $_REQUEST['typ'] == 'ueberweisungen'){
                     // Formular Überweisung
