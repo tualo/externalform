@@ -7,10 +7,6 @@
         public static function run(&$request,&$result){
             @session_start();
             // check dynamic fieldnames
-                echo $_SERVER['HTTP_HOST'].'<br>'.$_SERVER['REQUEST_URI'].'<br>';
-            print_r($_REQUEST);
-//      print_r($_SESSION['wa_session']);
-//            exit();
             if( 
                 isset($_REQUEST[$_SESSION['wa_session']['login']['usrOldID']]) 
                     && isset($_REQUEST[$_SESSION['wa_session']['login']['pwOldID']])
