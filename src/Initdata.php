@@ -11,7 +11,7 @@ class Initdata extends CMSMiddleWare{
             if ($_SESSION['wa_session']['login']['loggedIn']==1){ // eventuell Rollen/Gruppen prüfen
                 $db  = App::get('session')->getDB();
                 if(isset($_REQUEST['rez'])){
-                    $db->direct('update rezepte set status=1, processed_datetime=now() where id={id}',['id'=>$_REQUEST['rez']]);
+                    $db->direct('update rezepte set status=1, processed_datetime=now(),login={login} where id={id}',['id'=>$_REQUEST['rez'],'login'=>$_SESSION['wa_session']['login']['user']]);
                 }
                 $rezepte = $db->direct("select 
                 id,
