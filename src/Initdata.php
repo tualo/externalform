@@ -11,7 +11,7 @@ class Initdata extends CMSMiddleWare{
             if ($_SESSION['wa_session']['login']['loggedIn']==1){ // eventuell Rollen/Gruppen prüfen
                 $db  = App::get('session')->getDB();
                 if(isset($_REQUEST['rez'])){
-                    $db->direct('update rezepte set status=1 where id={id}',['id'=>$_REQUEST['rez']]);
+                    $db->direct('update rezepte set status=1, processed_datetime=now() where id={id}',['id'=>$_REQUEST['rez']]);
                 }
                 $rezepte = $db->direct("select 
                 id,
@@ -25,6 +25,7 @@ class Initdata extends CMSMiddleWare{
                 rezeptwunsch,
                 login,
                 date_format(datetime,'%d.%m.%Y %H:%i') datetime,
+                date_format(processed_datetime,'%d.%m.%Y %H:%i') processed_datetime,
                 status
             from rezepte order by status, datetime",[]);
                 $result['rezepte']=$rezepte;
