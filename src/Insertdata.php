@@ -36,17 +36,8 @@ class Insertdata extends CMSMiddleWare{
                                     'rezeptwunsch'=>$_REQUEST['rezeptwunsch']
 
                                 ]);
-/*                            $geburtsdatum=$_REQUEST['geburtsdatum'];
-                            $strasse=$_REQUEST['strasse'];
-                            $plz=$_REQUEST['plz'];
-                            $ort=$_REQUEST['ort'];
-                            $telefon=$_REQUEST['telefon'];
-                            $email=$_REQUEST['email'];
-                            $rezeptwunsch=$_REQUEST['rezeptwunsch'];
-
-                        )
-                           ('".$_REQUEST['name']."','".$_REQUEST['geburtsdatum']."','".$_REQUEST['strasse']."','".$_REQUEST['plz']."','".$_REQUEST['ort']."','".$_REQUEST['telefon']."','".$_REQUEST['email']."','".$_REQUEST['rezeptwunsch']."','" ,[]);
-*/ 
+                                header('Location:https://hausarztpraxis-roedental.de/vielen-dank-rezept/');
+                                exit();
                 } 
             if ( $_REQUEST['typ'] == 'ueberweisungen'){
                     // Formular Überweisung
@@ -58,6 +49,7 @@ class Insertdata extends CMSMiddleWare{
 
             }
         }catch(\Exception $e){
+            syslog(LOG_WARNING, "RezepteFormular ".$e->getMessage()." - ".__LINE__." ".__FILE__." ");
         }
     }
 }
