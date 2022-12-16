@@ -13,7 +13,20 @@ class Initdata extends CMSMiddleWare{
                 if(isset($_REQUEST['rez'])){
                     $db->direct('update rezepte set status=1 where id={id}',['id'=>$_REQUEST['rez']]);
                 }
-                $rezepte = $db->direct('select * from rezepte order by status asc',[]);
+                $rezepte = $db->direct("select 
+                id,
+                name,
+                date_format(geburtsdatum,'%d.%m.%Y') geburtsdatum,
+                strasse,
+                plz,
+                Ort,
+                telefon,
+                email,
+                rezeptwunsch,
+                login,
+                date_format(datetime,'%d.%m.%Y %H:%i') datetime,
+                status
+            from rezepte order by status, datetime",[]);
                 $result['rezepte']=$rezepte;
             }
         }catch(\Exception $e){
