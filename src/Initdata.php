@@ -10,13 +10,11 @@ class Initdata extends CMSMiddleWare{
         try{
             if ($_SESSION['wa_session']['login']['loggedIn']==1){ // eventuell Rollen/Gruppen prüfen
                 $db  = App::get('session')->getDB();
-                $rezepte = $db->direct('select * from rezepte',[]);
-                $result['rezepte']=$rezepte;
                 if(isset($_REQUEST['rez'])){
-                    echo 'BLAassssssssss';
                     $db->direct('update rezepte set status=1 where id={id}',['id'=>$_REQUEST['rez']]);
                 }
-
+                $rezepte = $db->direct('select * from rezepte order by status asc',[]);
+                $result['rezepte']=$rezepte;
             }
         }catch(\Exception $e){
             
