@@ -27,7 +27,9 @@ class Initdata extends CMSMiddleWare{
                 date_format(datetime,'%d.%m.%Y %H:%i') datetime,
                 date_format(processed_datetime,'%d.%m.%Y %H:%i') processed_datetime,
                 status
-            from rezepte order by status, datetime",[]);
+            from rezepte 
+                where status < 2
+                order by status, datetime",[]);
                 $result['rezepte']=$rezepte;
             }
         }catch(\Exception $e){

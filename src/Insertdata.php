@@ -4,11 +4,13 @@
 */
 namespace Tualo\Office\ExternalForm;
 use Tualo\Office\ContentManagementSystem\CMSMiddleware;
+use Tualo\Office\Basic\TualoApplication as App;
 
 class Insertdata extends CMSMiddleWare{
     public static function run(&$request,&$result){
         @session_start();
         try{
+            $db  = App::get('session')->getDB();
             if ( isset($_REQUEST['typ']) ){ // klären DB Zugang
                 if ( $_REQUEST['typ'] == 'rezept'){
                     // Formular Rezept
