@@ -13,6 +13,7 @@ class Initdata extends CMSMiddleWare{
                 $rezepte = $db->direct('select * from rezepte',[]);
                 $result['rezepte']=$rezepte;
                 if(isset($_REQUEST['rez'])){
+                    echo 'BLAassssssssss';
                     $db->direct('update rezepte set status=1 where id={id}',['id'=>$_REQUEST['rez']]);
                 }
 
