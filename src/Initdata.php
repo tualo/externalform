@@ -13,6 +13,7 @@ class Initdata extends CMSMiddleWare{
                 if(isset($_REQUEST['rez'])){
                     $db->direct('update rezepte set status=1, processed_datetime=now(),login={login} where id={id}',['id'=>$_REQUEST['rez'],'login'=>$_SESSION['wa_session']['login']['user']]);
                 }
+                    $db->direct('update rezepte set status=2 where status=1 and datetime < now() + interval -10 DAY ',[]);
                 $rezepte = $db->direct("select 
                 id,
                 name,
