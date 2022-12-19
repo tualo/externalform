@@ -39,12 +39,31 @@ class Insertdata extends CMSMiddleWare{
                                 header('Location:https://hausarztpraxis-roedental.de/vielen-dank-rezept/');
                                 exit();
                 } 
-            if ( $_REQUEST['typ'] == 'ueberweisungen'){
+            if ( $_REQUEST['typ'] == 'ueberweisung'){
                     // Formular Überweisung
                     // Überprüfung
-                    $db->direct("insert into ueberweisungen (name, geburtsdatum, strasse, plz, Ort, telefon, email, ueberweisungswunsch) 
-                        VALUES 
-                            ('".$_REQUEST['name']."','".$_REQUEST['geburtsdatum']."','".$_REQUEST['strasse']."','".$_REQUEST['plz']."','".$_REQUEST['ort']."','".$_REQUEST['telefon']."','".$_REQUEST['email']."','".$_REQUEST['ueberweisungswunsch']."','" ,[]);                    
+                    $db->direct("insert into rezepte (name, geburtsdatum, strasse, plz, Ort, telefon, email, ueberweisungswunsch) 
+                        VALUES ( {name}, 
+                                 {geburtsdatum},
+                                 {strasse},
+                                 {plz},
+                                 {ort},
+                                 {telefon},
+                                 {email},
+                                 {ueberweisungswunsch}
+                                )",[
+                                    'name'=>$_REQUEST['name'],
+                                    'geburtsdatum'=>$_REQUEST['geburtsdatum'],
+                                    'strasse' => $_REQUEST['strasse'],
+                                    'plz'=>$_REQUEST['plz'],
+                                    'ort'=>$_REQUEST['ort'],
+                                    'telefon'=>$_REQUEST['telefon'],
+                                    'email'=>$_REQUEST['email'],
+                                    'ueberweisungswunsch'=>$_REQUEST['ueberweisungswunsch']
+
+                                ]);
+                                header('Location:https://hausarztpraxis-roedental.de/vielen-dank-ueberweisung/');
+                                exit();                   
                 } 
 
             }
