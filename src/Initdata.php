@@ -55,6 +55,11 @@ class Initdata extends CMSMiddleWare{
                 where status < 2
                 order by status, datetime",[]);
                 $result['ueberweisungen']=$ueberweisungen;                
+            
+            if(isset($_REQUEST['m'])){
+                $result['m']=$_REQUEST['m'];
+            }else{
+                $result['m']=1;
             }
         }catch(\Exception $e){
             
