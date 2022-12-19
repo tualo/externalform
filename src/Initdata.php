@@ -18,48 +18,49 @@ class Initdata extends CMSMiddleWare{
                 }
                 $db->direct('update rezepte set status=2 where status=1 and datetime < now() + interval -10 DAY ',[]);
                 $rezepte = $db->direct("select 
-                id,
-                name,
-                date_format(geburtsdatum,'%d.%m.%Y') geburtsdatum,
-                strasse,
-                plz,
-                Ort,
-                telefon,
-                email,
-                rezeptwunsch,
-                login,
-                date_format(datetime,'%d.%m.%Y %H:%i') datetime,
-                date_format(processed_datetime,'%d.%m.%Y %H:%i') processed_datetime,
-                status
-            from rezepte 
-                where status < 2
-                order by status, datetime",[]);
+                    id,
+                    name,
+                    date_format(geburtsdatum,'%d.%m.%Y') geburtsdatum,
+                    strasse,
+                    plz,
+                    Ort,
+                    telefon,
+                    email,
+                    rezeptwunsch,
+                    login,
+                    date_format(datetime,'%d.%m.%Y %H:%i') datetime,
+                    date_format(processed_datetime,'%d.%m.%Y %H:%i') processed_datetime,
+                    status
+                from rezepte 
+                    where status < 2
+                    order by status, datetime",[]);
                 $result['rezepte']=$rezepte;
 
                 $db->direct('update ueberweisungen set status=2 where status=1 and datetime < now() + interval -10 DAY ',[]);
                 $ueberweisungen = $db->direct("select 
-                id,
-                name,
-                date_format(geburtsdatum,'%d.%m.%Y') geburtsdatum,
-                strasse,
-                plz,
-                Ort,
-                telefon,
-                email,
-                ueberweisungswunsch,
-                login,
-                date_format(datetime,'%d.%m.%Y %H:%i') datetime,
-                date_format(processed_datetime,'%d.%m.%Y %H:%i') processed_datetime,
-                status
-            from ueberweisungen 
-                where status < 2
-                order by status, datetime",[]);
+                    id,
+                    name,
+                    date_format(geburtsdatum,'%d.%m.%Y') geburtsdatum,
+                    strasse,
+                    plz,
+                    Ort,
+                    telefon,
+                    email,
+                    ueberweisungswunsch,
+                    login,
+                    date_format(datetime,'%d.%m.%Y %H:%i') datetime,
+                    date_format(processed_datetime,'%d.%m.%Y %H:%i') processed_datetime,
+                    status
+                from ueberweisungen 
+                    where status < 2
+                    order by status, datetime",[]);
                 $result['ueberweisungen']=$ueberweisungen;                
             
-            if(isset($_REQUEST['m'])){
-                $result['m']=$_REQUEST['m'];
-            }else{
-                $result['m']=1;
+                if(isset($_REQUEST['m'])){
+                    $result['m']=$_REQUEST['m'];
+                }else{
+                    $result['m']=1;
+                }
             }
         }catch(\Exception $e){
             
