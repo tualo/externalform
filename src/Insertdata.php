@@ -42,7 +42,7 @@ class Insertdata extends CMSMiddleWare{
             if ( $_REQUEST['typ'] == 'ueberweisung'){
                     // Formular Überweisung
                     // Überprüfung
-                    $db->direct("insert into rezepte (name, geburtsdatum, strasse, plz, Ort, telefon, email, ueberweisungswunsch) 
+                    $db->direct("insert into ueberweisungen (name, geburtsdatum, strasse, plz, Ort, telefon, email, ueberweisungswunsch) 
                         VALUES ( {name}, 
                                  {geburtsdatum},
                                  {strasse},
