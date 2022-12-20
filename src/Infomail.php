@@ -11,6 +11,7 @@ class Infomail extends CMSMiddleWare{
         @session_start();
         try{
             $ct=0;
+            
             $mailText='Folgende neue Rezept- und Überweisungswünsche sind auf der Webseite eingetragen worden:\n';
             $db  = App::get('session')->getDB();
             $sql="select count(0) anzahl, 'Überweisungen ' Typ from ueberweisungen where mailsend = 0  and status=0
@@ -51,10 +52,11 @@ class Infomail extends CMSMiddleWare{
                 $db->direct('update ueberweisungen set mailsend=1',[]);
                 // set mailsend to 1
             }
-/*            echo '<pre>';
+            echo '<pre>';
             print_r($infoData);
+            print_r($_SERVER);
             echo '</pre>';
-*/
+
         }catch(\Exception $e){
             syslog(LOG_WARNING, "InfoMail:  ".$e->getMessage()." - ".__LINE__." ".__FILE__." ");
         }
