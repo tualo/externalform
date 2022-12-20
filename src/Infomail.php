@@ -46,7 +46,8 @@ class Infomail extends CMSMiddleWare{
                         'Nachricht von Webseite',
                         now(),
                         '".$mailText."')";
-                // echo PHP_EOL.$insSQL.PHP_EOL;        
+                // echo PHP_EOL.$insSQL.PHP_EOL;
+                $db->direct($insSQL,[]);        
                 $db->direct('update rezepte set mailsend=1',[]);
                 $db->direct('update ueberweisungen set mailsend=1',[]);
                 // set mailsend to 1
