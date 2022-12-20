@@ -12,7 +12,8 @@
     "autoload": {
         "psr-4": {
             "Tualo\\Office\\ExternalForm\\": "src/"
-        }
+        },
+        "files": ["src/functions.php"]
     },
     "minimum-stability": "dev",
     "require": {}
