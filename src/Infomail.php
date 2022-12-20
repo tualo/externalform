@@ -11,11 +11,11 @@ class Infomail extends CMSMiddleWare{
         @session_start();
         try{
             $ct=0;
-            $mailText='Folgende neue Rezepte- und Überweisungswünsche sind auf der Webseite eingetragen worden:\n';
+            $mailText='Folgende neue Rezept- und Überweisungswünsche sind auf der Webseite eingetragen worden:\n';
             $db  = App::get('session')->getDB();
-            $sql="select count(0) anzahl, 'Überweisungen ' Typ from ueberweisungen where mailsend = 0
+            $sql="select count(0) anzahl, 'Überweisungen ' Typ from ueberweisungen where mailsend = 0  and status=0
                     union
-                select count(0) anzahl, 'Rezepte ' Typ from rezepte where mailsend = 0";
+                select count(0) anzahl, 'Rezepte ' Typ from rezepte where mailsend = 0  and status=0";
             $infoData=$db->direct($sql,[]);
             foreach($infoData as $data){
                 if($data['anzahl']>0){
@@ -25,7 +25,6 @@ class Infomail extends CMSMiddleWare{
             }
             if($ct>0){
                 // insert in outgoing mails
-                echo $mailText;
                 $insSQL="insert into outgoing_mails (
                     id,
                     send_from,
@@ -52,9 +51,10 @@ class Infomail extends CMSMiddleWare{
                 $db->direct('update ueberweisungen set mailsend=1',[]);
                 // set mailsend to 1
             }
-            echo '<pre>';
+/*            echo '<pre>';
             print_r($infoData);
             echo '</pre>';
+*/
         }catch(\Exception $e){
             syslog(LOG_WARNING, "InfoMail:  ".$e->getMessage()." - ".__LINE__." ".__FILE__." ");
         }
