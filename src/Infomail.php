@@ -11,7 +11,7 @@ class Infomail extends CMSMiddleWare{
         @session_start();
         try{
             $ct=0;
-            $mailText='Folgende neue Rezepte- und Überweisungswünsche sind auf der Weibseite eingetragen worden:\n';
+            $mailText='Folgende neue Rezepte- und Überweisungswünsche sind auf der Webseite eingetragen worden:\n';
             $db  = App::get('session')->getDB();
             $sql="select count(0) anzahl, 'Überweisungen ' Typ from ueberweisungen where mailsend = 0
                     union
@@ -46,27 +46,10 @@ class Infomail extends CMSMiddleWare{
                         'Nachricht von Webseite',
                         now(),
                         '".$mailText."')";
-                echo PHP_EOL.$insSQL.PHP_EOL;        
-                // $db->direct('update rezepte set mailsend=1',[]);
-                // $db->direct('update ueberweisungen set mailsend=1',[]);
+                // echo PHP_EOL.$insSQL.PHP_EOL;        
+                $db->direct('update rezepte set mailsend=1',[]);
+                $db->direct('update ueberweisungen set mailsend=1',[]);
                 // set mailsend to 1
-/*
-id
-send_from
-send_from_name
-send_to
-reply_to
-reply_to_name
-subject
-create_date
-send_date
-attachment_file
-body
-excpected_response
-tag
-
-*/
-
             }
             echo '<pre>';
             print_r($infoData);
